@@ -2,9 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { PostEntity } from '../entities/post.entity';
-import { CreatePostRequest } from '../requests/post-requests/create-post.request';
-import { UpdatePostRequest } from '../requests/post-requests/update-post.request';
+import { PostEntity } from './post.entity';
 
 @Injectable()
 export class PostService {
@@ -24,11 +22,11 @@ export class PostService {
     return this.postRepository.findOne(id);
   }
 
-  create(attributes: CreatePostRequest): Promise<PostEntity> {
+  create(attributes: object): Promise<PostEntity> {
     return this.postRepository.save(attributes);
   }
 
-  async update(id: number, attributes: UpdatePostRequest): Promise<PostEntity> {
+  async update(id: number, attributes: object): Promise<PostEntity> {
     await this.postRepository.update(id, attributes);
     return this.show(id);
   }

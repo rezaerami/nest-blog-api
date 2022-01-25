@@ -1,6 +1,6 @@
-import {IsOptional, IsString, MaxLength} from "class-validator";
+import { IsOptional, IsString, MaxLength } from 'class-validator';
 
-export class UpdatePostRequest {
+export class UpdatePostDto {
   @IsOptional()
   @IsString()
   @MaxLength(128)

@@ -1,6 +1,6 @@
 import { IsNumber, Max } from 'class-validator';
 
-export class IndexPostRequest {
+export class IndexPostDto {
   @IsNumber()
   @Max(1000)
   offset: number;
