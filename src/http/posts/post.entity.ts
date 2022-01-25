@@ -1,11 +1,12 @@
 import {
   Column,
   Entity,
-  JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserEntity } from '../users/user.entity';
+import { CommentEntity } from '../comments/comment.entity';
 
 @Entity('posts')
 export class PostEntity {
@@ -22,4 +23,7 @@ export class PostEntity {
   userId: number;
   @ManyToOne(() => UserEntity, (user) => user.posts)
   public user: UserEntity;
+
+  @OneToMany(() => CommentEntity, (comment) => comment.post)
+  comments: CommentEntity[];
 }
